@@ -1,0 +1,24 @@
+dependencies {
+    compile project(':jmediator-spring')
+//    compile project(':jmediator-example-handlers')
+    compile project(':jmediator-example-handlers-kotlin')
+    compile project(':jmediator-example-persistence-jpa')
+    compile 'org.springframework.boot:spring-boot-starter'
+
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtime 'com.h2database:h2'
+
+    // Spring Web dependencies
+    compile project (':jmediator-gateway-spring-web')
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    // SparkJava dependencies
+//    compile project(':jmediator-gateway-sparkjava-spring')
+//    compile 'org.apache.tomcat.embed:tomcat-embed-el' //required for hibernate validation
+////    compile 'org.glassfish:javax.el:3.0.1-b08' //(alternative)required for hibernate validation
+
+}
+
+bootJar {
+    enabled = true
+}

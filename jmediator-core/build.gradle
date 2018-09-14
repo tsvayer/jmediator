@@ -1,0 +1,10 @@
+group = 'jmediator'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(":jmediator-abstractions")
+    compile 'io.projectreactor:reactor-core'
+    compile 'net.jodah:typetools'
+    testCompile 'junit:junit'
+    testCompile 'org.assertj:assertj-core'
+}

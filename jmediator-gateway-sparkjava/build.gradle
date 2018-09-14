@@ -1,0 +1,8 @@
+group = 'jmediator.gateway'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-abstractions')
+    compile 'com.sparkjava:spark-core:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+}

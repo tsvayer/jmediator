@@ -1,0 +1,8 @@
+group = 'jmediator.gateway'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-gateway-sparkjava')
+    compile 'org.springframework:spring-context'
+    compile 'javax.annotation:javax.annotation-api'
+}

@@ -1,0 +1,16 @@
+group = 'jmediator.proxy'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project (':jmediator-abstractions')
+    compile 'org.asynchttpclient:async-http-client'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile 'net.jodah:typetools'
+//    compile 'io.projectreactor.ipc:reactor-netty:0.6.4.RELEASE' //TODO: Switch here in the future
+
+    testCompile 'junit:junit'
+    testCompile 'org.assertj:assertj-core'
+    testCompile project(':jmediator-util')
+    testCompile project(':jmediator-example-messages')
+    testCompile project(':jmediator-core')
+}

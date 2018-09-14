@@ -1,0 +1,34 @@
+include 'jmediator-util'
+include 'jmediator-abstractions'
+include 'jmediator-core'
+include 'jmediator-logging'
+include 'jmediator-validation-jsr349'
+include 'jmediator-metrics'
+include 'jmediator-discovery-redis'
+include 'jmediator-caching-caffeine'
+include 'jmediator-tracing-zipkin'
+include 'jmediator-spring'
+include 'jmediator-guice'
+include 'jmediator-proxy-http'
+include 'jmediator-gateway-spring-web'
+include 'jmediator-gateway-sparkjava'
+include 'jmediator-gateway-sparkjava-spring'
+include 'jmediator-gateway-sparkjava-guice'
+include 'jmediator-example-messages'
+include 'jmediator-example-handlers'
+include 'jmediator-example-host'
+include 'jmediator-example-host-guice'
+include 'jmediator-example-pingpong'
+include 'jmediator-example-domain'
+include 'jmediator-example-persistence-jpa'
+include 'jmediator-example-handlers-kotlin'
+
+project(':jmediator-example-messages').projectDir = new File('examples/jmediator-example-messages')
+project(':jmediator-example-handlers').projectDir = new File('examples/jmediator-example-handlers')
+project(':jmediator-example-host').projectDir = new File('examples/jmediator-example-host')
+project(':jmediator-example-host-guice').projectDir = new File('examples/jmediator-example-host-guice')
+project(':jmediator-example-pingpong').projectDir = new File('examples/jmediator-example-pingpong')
+project(':jmediator-example-domain').projectDir = new File('examples/jmediator-example-domain')
+project(':jmediator-example-persistence-jpa').projectDir = new File('examples/jmediator-example-persistence-jpa')
+project(':jmediator-example-handlers-kotlin').projectDir = new File('examples/jmediator-example-handlers-kotlin')
+

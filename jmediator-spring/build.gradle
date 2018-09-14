@@ -1,0 +1,16 @@
+group = 'jmediator'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-util')
+    compile project(':jmediator-core')
+    compile project(':jmediator-logging')
+    compile project(':jmediator-validation-jsr349')
+    compile project(':jmediator-metrics')
+//    compile project(':jmediator-caching-caffeine')
+//    compile project(':jmediator-discovery-redis')
+//    compile project(':jmediator-tracing-zipkin')
+//    compile 'io.zipkin.reporter:zipkin-sender-okhttp3:0.10.0'
+    compile 'org.springframework:spring-context'
+    compile 'javax.annotation:javax.annotation-api'
+}

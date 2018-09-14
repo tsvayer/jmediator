@@ -1,0 +1,13 @@
+dependencies {
+    compile project(':jmediator-spring')
+    compile project(':jmediator-gateway-spring-web')
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+}
+
+bootJar {
+    enabled = true
+}

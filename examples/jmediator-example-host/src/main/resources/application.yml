@@ -1,0 +1,10 @@
+logging:
+  level:
+    jmediator: debug
+
+jmediator:
+  service:
+    address: http://localhost:8080/api
+
+server:
+  port: 8080

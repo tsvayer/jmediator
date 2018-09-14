@@ -1,0 +1,7 @@
+group = 'jmediator.middleware'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-abstractions')
+    compile 'io.zipkin.brave:brave:5.3.2'
+}

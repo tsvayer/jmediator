@@ -1,0 +1,4 @@
+dependencies {
+    compile project(":jmediator-abstractions")
+    compile 'javax.validation:validation-api'
+}

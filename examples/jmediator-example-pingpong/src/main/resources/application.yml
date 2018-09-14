@@ -1,0 +1,9 @@
+server:
+  port: 8081
+logging:
+  level:
+    jmediator: debug
+
+jmediator:
+  service:
+    address: http://localhost:8081/api

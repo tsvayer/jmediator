@@ -1,0 +1,17 @@
+group = 'jmediator'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-util')
+    compile project(':jmediator-core')
+    compile project(':jmediator-logging')
+
+    compile 'com.google.inject:guice:4.2.0'
+    compile 'com.google.inject.extensions:guice-multibindings:4.2.0'
+    compile 'org.reflections:reflections:0.9.11'
+    compile 'net.jodah:typetools'
+
+    testCompile 'junit:junit'
+    testCompile 'org.assertj:assertj-core'
+}
+

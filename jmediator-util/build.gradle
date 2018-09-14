@@ -1,0 +1,7 @@
+group = 'jmediator'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    compile 'io.projectreactor:reactor-core'
+}

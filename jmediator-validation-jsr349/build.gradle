@@ -1,0 +1,7 @@
+group = 'jmediator.middleware'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-abstractions')
+    compile 'org.hibernate.validator:hibernate-validator'
+}

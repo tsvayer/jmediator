@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':jmediator-example-domain')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'javax.xml.bind:jaxb-api' //hibernate needs this for java 9+
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testRuntime 'com.h2database:h2'
+}

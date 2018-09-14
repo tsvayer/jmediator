@@ -1,0 +1,9 @@
+group = 'jmediator.extensions'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':jmediator-abstractions')
+    compile project(':jmediator-proxy-http')
+    compile 'redis.clients:jedis'
+    compile 'net.jodah:typetools'
+}

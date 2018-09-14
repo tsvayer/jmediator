@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':jmediator-util')
+    compile project(':jmediator-example-domain')
+    compile project(':jmediator-example-messages')
+    compile project(':jmediator-abstractions')
+}

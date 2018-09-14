@@ -1,0 +1,7 @@
+dependencies {
+    compile project(':jmediator-example-domain')
+    compile project(':jmediator-example-messages')
+    compile project(':jmediator-abstractions')
+    testCompile 'junit:junit'
+    testCompile 'org.assertj:assertj-core'
+}
