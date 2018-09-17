@@ -12,22 +12,22 @@ import javax.annotation.PostConstruct;
 
 @Configuration
 public class Installer {
-    @Autowired
-    private SparkjavaGateway gateway;
-    @Autowired
-    private Environment env;
+  @Autowired
+  private SparkjavaGateway gateway;
+  @Autowired
+  private Environment env;
 
-    @Bean
-    SparkjavaGateway gateway(
-            ObjectMapper objectMapper,
-            MessageBus messageBus,
-            MessageRegistry messageRegistry) {
-        return new SparkjavaGateway(objectMapper, messageBus, messageRegistry);
-    }
+  @Bean
+  SparkjavaGateway gateway(
+    ObjectMapper objectMapper,
+    MessageBus messageBus,
+    MessageRegistry messageRegistry) {
+    return new SparkjavaGateway(objectMapper, messageBus, messageRegistry);
+  }
 
-    @PostConstruct
-    void configure() {
-        var port = env.getProperty("server.port", Integer.class);
-        new RouteConfiguration().configure(gateway, port);
-    }
+  @PostConstruct
+  void configure() {
+    var port = env.getProperty("server.port", Integer.class);
+    new RouteConfiguration().configure(gateway, port);
+  }
 }

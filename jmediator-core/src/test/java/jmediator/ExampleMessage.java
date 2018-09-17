@@ -1,6 +1,6 @@
 package jmediator;
 
 @MessageMapping("test")
-public class ExampleMessage implements Message<VoidResponse>{
+public class ExampleMessage implements Message<VoidResponse> {
 
 }

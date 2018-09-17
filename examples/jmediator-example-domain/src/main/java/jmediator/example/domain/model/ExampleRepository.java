@@ -4,5 +4,5 @@ import java.util.Optional;
 
 public interface ExampleRepository extends Repository<ExampleEntity, Long> {
 
-    Optional<ExampleEntity> findByValue(String value);
+  Optional<ExampleEntity> findByValue(String value);
 }

@@ -13,25 +13,25 @@ import javax.validation.constraints.NotNull
 
 @MessageMapping("ping/send")
 data class PingK(
-        @NotNull val id: String? = null
+  @NotNull val id: String? = null
 ) : Message<PongK>
 
 data class PongK(
-        val echoId: String,
-        val timestamp: LocalDateTime = LocalDateTime.now()
+  val echoId: String,
+  val timestamp: LocalDateTime = LocalDateTime.now()
 )
 
 @SpringBootApplication
 @ComponentScan(basePackages = ["jmediator"])
 open class PingPongApplicationK(
-        private val registry: MessageHandlerRegistry
+  private val registry: MessageHandlerRegistry
 ) {
-    @PostConstruct
-    fun routes() {
-        registry.register(PingK::class.java) { (id) -> PongK(id.orEmpty()).toMono() }
-    }
+  @PostConstruct
+  fun routes() {
+    registry.register(PingK::class.java) { (id) -> PongK(id.orEmpty()).toMono() }
+  }
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(PingPongApplicationK::class.java, *args)
+  SpringApplication.run(PingPongApplicationK::class.java, *args)
 }

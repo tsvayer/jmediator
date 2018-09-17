@@ -7,36 +7,37 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 public class HttpMessageBusProxyTest {
-    final static String remoteAddress = "http://localhost:8080/api";
-    @Test
-    public void send() throws Exception {
-        var objectMapper = getObjectMapper();
-        var busProxy = new HttpMessageBusProxy(objectMapper, remoteAddress);
+  final static String remoteAddress = "http://localhost:8080/api";
 
-        var query = new ExampleQuery() {{
-            setFilter("from proxy");
-        }};
-        var response = busProxy.send(query).toFuture().get();
+  @Test
+  public void send() throws Exception {
+    var objectMapper = getObjectMapper();
+    var busProxy = new HttpMessageBusProxy(objectMapper, remoteAddress);
 
-        System.out.println(response.getResult());
-    }
+    var query = new ExampleQuery() {{
+      setFilter("from proxy");
+    }};
+    var response = busProxy.send(query).toFuture().get();
 
-    @Test
-    public void sendThroughProxy() throws Exception {
-        var objectMapper = getObjectMapper();
-        var busProxy = new HttpMessageBusProxy(objectMapper, remoteAddress);
-        var registry = new DefaultMessageHandlerRegistry(new AnnotationMessageRegistry());
-        var messageBus = new DefaultMessageBus(new MiddlewareMessageDispatcher(new LocalHandlerMiddleware(registry)));
-        registry.register(ExampleQuery.class, busProxy::send);
+    System.out.println(response.getResult());
+  }
 
-        var response = messageBus.send(new ExampleQuery() {{
-            setFilter("from in memory bus through proxy");
-        }}).toFuture().get();
+  @Test
+  public void sendThroughProxy() throws Exception {
+    var objectMapper = getObjectMapper();
+    var busProxy = new HttpMessageBusProxy(objectMapper, remoteAddress);
+    var registry = new DefaultMessageHandlerRegistry(new AnnotationMessageRegistry());
+    var messageBus = new DefaultMessageBus(new MiddlewareMessageDispatcher(new LocalHandlerMiddleware(registry)));
+    registry.register(ExampleQuery.class, busProxy::send);
 
-        System.out.println(response.getResult());
-    }
+    var response = messageBus.send(new ExampleQuery() {{
+      setFilter("from in memory bus through proxy");
+    }}).toFuture().get();
 
-    private ObjectMapper getObjectMapper() {
-        return new ObjectMapperFactory().getObjectMapper();
-    }
+    System.out.println(response.getResult());
+  }
+
+  private ObjectMapper getObjectMapper() {
+    return new ObjectMapperFactory().getObjectMapper();
+  }
 }

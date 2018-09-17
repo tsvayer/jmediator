@@ -2,7 +2,7 @@ group = 'jmediator.proxy'
 version = '0.0.1-SNAPSHOT'
 
 dependencies {
-    compile project (':jmediator-abstractions')
+    compile project(':jmediator-abstractions')
     compile 'org.asynchttpclient:async-http-client'
     compile 'com.fasterxml.jackson.core:jackson-databind'
     compile 'net.jodah:typetools'

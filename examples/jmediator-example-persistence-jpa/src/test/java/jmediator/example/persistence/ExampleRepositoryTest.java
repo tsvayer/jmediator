@@ -21,21 +21,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EntityScan(basePackages = "jmediator")
 @AutoConfigurationPackage
 public class ExampleRepositoryTest {
-    @Autowired
-    ExampleRepository repository;
+  @Autowired
+  ExampleRepository repository;
 
-    Logger logger = LoggerFactory.getLogger(getClass());
+  Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Test
-    public void doit() {
-        var entity = new ExampleEntity();
-        var value = "Yay!";
-        entity.setValue(value);
-        repository.save(entity);
+  @Test
+  public void doit() {
+    var entity = new ExampleEntity();
+    var value = "Yay!";
+    entity.setValue(value);
+    repository.save(entity);
 
-        repository.findByValue(value)
-                .map(ExampleEntity::getValue)
-                .ifPresent(val -> logger.info("Value : {}", val));
-    }
+    repository.findByValue(value)
+      .map(ExampleEntity::getValue)
+      .ifPresent(val -> logger.info("Value : {}", val));
+  }
 
 }

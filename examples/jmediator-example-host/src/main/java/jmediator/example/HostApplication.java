@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "jmediator")
 public class HostApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(HostApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(HostApplication.class, args);
+  }
 }

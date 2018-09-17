@@ -8,63 +8,64 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+
 import java.util.logging.Logger;
 
 @Configuration
 public class MessagingInstaller {
-    @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapperFactory().getObjectMapper();
-    }
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapperFactory().getObjectMapper();
+  }
 
-    @Bean
-    public MessageBus messageBus(MessageDispatcher dispatcher) {
-        return new DefaultMessageBus(dispatcher);
-    }
+  @Bean
+  public MessageBus messageBus(MessageDispatcher dispatcher) {
+    return new DefaultMessageBus(dispatcher);
+  }
 
-    @Bean
-    public MessageDispatcher messageDispatcher(MessagingMiddleware middleware) {
-        return new MiddlewareMessageDispatcher(middleware);
-    }
+  @Bean
+  public MessageDispatcher messageDispatcher(MessagingMiddleware middleware) {
+    return new MiddlewareMessageDispatcher(middleware);
+  }
 
-    @Bean
-    public MessageRegistry messageRegistry() {
-        return new AnnotationMessageRegistry();
-    }
+  @Bean
+  public MessageRegistry messageRegistry() {
+    return new AnnotationMessageRegistry();
+  }
 
-    @Bean
-    public MessageHandlerRegistry messageHandlerRegistry(Environment env, MessageRegistry messageRegistry, ObjectMapper objectMapper) {
-        var messageHandlerRegistry = new DefaultMessageHandlerRegistry(messageRegistry);
-        return messageHandlerRegistry;
-        //NOTE: Redis discovery
+  @Bean
+  public MessageHandlerRegistry messageHandlerRegistry(Environment env, MessageRegistry messageRegistry, ObjectMapper objectMapper) {
+    var messageHandlerRegistry = new DefaultMessageHandlerRegistry(messageRegistry);
+    return messageHandlerRegistry;
+    //NOTE: Redis discovery
 //        String serviceAddress = env.getProperty("jmediator.service.address");
 //        return new RedisRegistrationAgent(serviceAddress, jedis(), messageHandlerRegistry, objectMapper);
-    }
+  }
 
-    @Bean
-    public MessagingMiddleware entryMiddleware(MessageHandlerResolver handlerResolver, ObjectMapper objectMapper) {
-        MessagingMiddleware middleware = new LocalHandlerMiddleware(handlerResolver);
-        middleware = new HibernateValidationMiddleware(middleware);
-        middleware = new LoggingMiddleware(
-                objectMapper,
-                getLogger(LoggingMiddleware.class),
-                middleware);
+  @Bean
+  public MessagingMiddleware entryMiddleware(MessageHandlerResolver handlerResolver, ObjectMapper objectMapper) {
+    MessagingMiddleware middleware = new LocalHandlerMiddleware(handlerResolver);
+    middleware = new HibernateValidationMiddleware(middleware);
+    middleware = new LoggingMiddleware(
+      objectMapper,
+      getLogger(LoggingMiddleware.class),
+      middleware);
 //        middleware = new ZipkinTracingMiddleware(tracer(), middleware);
-        return new TimerMetricsMiddleware(
-                getLogger(TimerMetricsMiddleware.class),
-                middleware);
-    }
+    return new TimerMetricsMiddleware(
+      getLogger(TimerMetricsMiddleware.class),
+      middleware);
+  }
 
-    private Logger getLogger(Class<?> forClass) {
-        return Logger.getLogger(forClass.getName());
-    }
+  private Logger getLogger(Class<?> forClass) {
+    return Logger.getLogger(forClass.getName());
+  }
 
 //    @Bean
 //    public Jedis jedis() {
 //        return new Jedis(); //TODO: read redis endpoint from config
 //    }
 
-    //NOTE: Zipkin related staff, if uncommenting it here configure middleware chain as well
+  //NOTE: Zipkin related staff, if uncommenting it here configure middleware chain as well
 //    @Bean
 //    public Tracer tracer() {
 //        return Tracing

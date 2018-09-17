@@ -6,26 +6,26 @@ import javax.persistence.Id;
 
 @javax.persistence.Entity
 public class ExampleEntity implements Entity<Long> {
-    @Id
-    @GeneratedValue
-    private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-    @Column
-    private String value;
+  @Column
+  private String value;
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setId(Long value) {
-        id = value;
-    }
+  public void setId(Long value) {
+    id = value;
+  }
 
-    public String getValue() {
-        return value;
-    }
+  public String getValue() {
+    return value;
+  }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+  public void setValue(String value) {
+    this.value = value;
+  }
 }

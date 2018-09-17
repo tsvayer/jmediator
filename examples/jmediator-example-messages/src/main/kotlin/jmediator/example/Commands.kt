@@ -6,13 +6,13 @@ import java.time.LocalDateTime
 import javax.validation.constraints.NotNull
 
 @MessageMapping(
-        "example/command",
-        "example/commandAlias")
+  "example/command",
+  "example/commandAlias")
 open class ExampleCommand(
-        @NotNull var date: LocalDateTime? = null
+  @NotNull var date: LocalDateTime? = null
 ) : Message<ExampleCommandResponse>
 
 open class ExampleCommandResponse(
-        var echoDate: LocalDateTime? = null
+  var echoDate: LocalDateTime? = null
 )
 

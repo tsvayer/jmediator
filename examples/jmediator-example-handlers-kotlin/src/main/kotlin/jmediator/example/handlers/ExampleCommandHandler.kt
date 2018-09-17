@@ -10,16 +10,16 @@ import jmediator.MessageHandler
 import reactor.core.publisher.Mono
 
 class ExampleCommandHandler(
-        private val bus: MessageBus,
-        private val repository: ExampleRepository
+  private val bus: MessageBus,
+  private val repository: ExampleRepository
 ) : MessageHandler<ExampleCommand, ExampleCommandResponse> {
 
-    override fun handle(message: ExampleCommand): Mono<ExampleCommandResponse> {
+  override fun handle(message: ExampleCommand): Mono<ExampleCommandResponse> {
 
-        val entity = repository.save(ExampleEntity())
+    val entity = repository.save(ExampleEntity())
 
-        return bus
-                .send(ExampleQuery().apply { filter = "(kotlin)Some filter: ${entity.id}" })
-                .map { ExampleCommandResponse().apply { echoDate = message.date } }
-    }
+    return bus
+      .send(ExampleQuery().apply { filter = "(kotlin)Some filter: ${entity.id}" })
+      .map { ExampleCommandResponse().apply { echoDate = message.date } }
+  }
 }

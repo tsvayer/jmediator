@@ -1,3 +1,4 @@
 package jmediator;
 
-public class VoidResponse {}
+public class VoidResponse {
+}

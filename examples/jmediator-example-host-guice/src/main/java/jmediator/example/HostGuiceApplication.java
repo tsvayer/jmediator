@@ -8,13 +8,13 @@ import com.google.inject.Guice;
 import java.util.Scanner;
 
 public class HostGuiceApplication {
-    public static void main(String[] args) {
-        Guice.createInjector(
-                new MessagingInstaller(),
-                new MessageHandlersInstaller(),
-                new Installer());
+  public static void main(String[] args) {
+    Guice.createInjector(
+      new MessagingInstaller(),
+      new MessageHandlersInstaller(),
+      new Installer());
 
-        System.out.println("started...");
-        new Scanner(System.in).next();
-    }
+    System.out.println("started...");
+    new Scanner(System.in).next();
+  }
 }

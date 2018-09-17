@@ -14,25 +14,25 @@ import java.util.List;
 @Component
 @Configuration
 @ComponentScan(
-        basePackages = "jmediator",
-        useDefaultFilters = false,
-        includeFilters = {@ComponentScan.Filter(
-                type = FilterType.ASSIGNABLE_TYPE,
-                value = MessageHandler.class)})
+  basePackages = "jmediator",
+  useDefaultFilters = false,
+  includeFilters = {@ComponentScan.Filter(
+    type = FilterType.ASSIGNABLE_TYPE,
+    value = MessageHandler.class)})
 public class MessageHandlersInstaller {
-    @Autowired
-    private MessageHandlerRegistry registry;
-    @Autowired(required = false)
-    private List<MessageHandler> handlers = new ArrayList<>();
+  @Autowired
+  private MessageHandlerRegistry registry;
+  @Autowired(required = false)
+  private List<MessageHandler> handlers = new ArrayList<>();
 
-    @PostConstruct
-    public void install() {
-        handlers.forEach(x -> {
-            Class[] arguments = TypeResolver.resolveRawArguments(MessageHandler.class, x.getClass());
-            Class messageClass = arguments[0];
+  @PostConstruct
+  public void install() {
+    handlers.forEach(x -> {
+      Class[] arguments = TypeResolver.resolveRawArguments(MessageHandler.class, x.getClass());
+      Class messageClass = arguments[0];
 
-            //NOTE: This is unsafe, but only way in Java generics? Any better?
-            registry.register(messageClass, x);
-        });
-    }
+      //NOTE: This is unsafe, but only way in Java generics? Any better?
+      registry.register(messageClass, x);
+    });
+  }
 }
